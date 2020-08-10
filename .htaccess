@@ -1,0 +1,14 @@
+Options -Indexes
+IndexIgnore *
+RewriteEngine On
+RewriteBase /
+
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^src/(.*)/$ public/$1 [L]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^(.*)$ application.php?page=$1 [QSA,L]
+
+
+RewriteRule !^(^public/(.*)$|application.php) [NC,F]
